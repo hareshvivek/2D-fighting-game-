@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>2D Showdown - Top-Down Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Game Canvas -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Sleek HUD Overlay -->
+  <div id="ui-overlay">
+    <!-- Top Bar: Arena Info & Reset Opponent Action -->
+    <div class="hud-top-bar">
+      <div class="game-badge">
+        <span class="arena-dot"></span>
+        <span class="arena-name">Verdant Arena</span>
+      </div>
+
+      <div class="top-actions">
+        <button id="resetDummyBtn" class="hud-btn" title="Reset Training Opponent (Key: R)">
+          <span class="key-tag">R</span>
+          <span>Reset Dummy</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Bottom Bar: Combat Controls Guide & Dash Cooldown Badges -->
+    <div class="hud-bottom-bar">
+      <div class="control-panel">
+        <!-- Movement -->
+        <div class="control-group">
+          <div class="key-cluster">
+            <span class="key-cap" id="keyW">W</span>
+            <div class="key-row">
+              <span class="key-cap" id="keyA">A</span>
+              <span class="key-cap" id="keyS">S</span>
+              <span class="key-cap" id="keyD">D</span>
+            </div>
+          </div>
+          <span class="hint-label">Move</span>
+        </div>
+
+        <div class="control-divider"></div>
+
+        <!-- Lock-on Toggle -->
+        <div class="control-group">
+          <span class="key-cap key-wide" id="keyShift">SHIFT</span>
+          <div class="hint-col">
+            <span class="hint-label">Lock-On</span>
+            <span class="hint-sub" id="lockOnStatus">OFF</span>
+          </div>
+        </div>
+
+        <div class="control-divider"></div>
+
+        <!-- M1 Punch (Left Click) -->
+        <div class="control-group">
+          <div class="mouse-badge" id="m1Badge">
+            <span class="mouse-icon">L-CLICK</span>
+          </div>
+          <div class="hint-col">
+            <span class="hint-label">M1 Punch</span>
+            <span class="hint-sub" id="comboCounterLabel">4-Hit (13 Dmg)</span>
+          </div>
+        </div>
+
+        <div class="control-divider"></div>
+
+        <!-- Block -->
+        <div class="control-group">
+          <span class="key-cap" id="keyF">F</span>
+          <div class="hint-col">
+            <span class="hint-label">Block</span>
+            <span class="hint-sub">180° Guard</span>
+          </div>
+        </div>
+
+        <div class="control-divider"></div>
+
+        <!-- Dashes with Cooldowns -->
+        <div class="control-group">
+          <span class="key-cap" id="keyQ">Q</span>
+          <div class="hint-col">
+            <span class="hint-label">+ WASD Dash</span>
+            <div class="cooldown-row">
+              <span class="cd-badge" id="fwdCdBadge" title="Forward Dash: W+Q">FWD: <strong id="fwdCdVal">RDY</strong></span>
+              <span class="cd-badge" id="sideCdBadge" title="Side Dash: A/D+Q">SIDE: <strong id="sideCdVal">RDY</strong></span>
+              <span class="cd-badge" id="backCdBadge" title="Backdash: S+Q">BACK: <strong id="backCdVal">RDY</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
